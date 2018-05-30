@@ -1,0 +1,15 @@
+Executable : /Users/lifanlong/Android/sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile
+-B/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/.externalNativeBuild/cmake/debug/armeabi-v7a
+-GAndroid Gradle - Ninja
+-DANDROID_ABI=armeabi-v7a
+-DANDROID_NDK=/Users/lifanlong/Android/sdk/ndk-bundle
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/build/intermediates/cmake/debug/obj/armeabi-v7a
+-DCMAKE_BUILD_TYPE=Debug
+-DCMAKE_MAKE_PROGRAM=/Users/lifanlong/Android/sdk/cmake/3.6.4111459/bin/ninja
+-DCMAKE_TOOLCHAIN_FILE=/Users/lifanlong/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DANDROID_PLATFORM=android-14
+-DCMAKE_CXX_FLAGS=-frtti -fexceptions
+jvmArgs : 
+

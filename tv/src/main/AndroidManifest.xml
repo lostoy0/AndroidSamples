@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback" >
         <activity
-            android:name=".MainActivity"
+            android:name=".raymond.TVDemoActivity"
             android:banner="@drawable/app_icon_your_company"
             android:icon="@drawable/app_icon_your_company"
             android:label="@string/app_name"
@@ -31,9 +31,22 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".PlaybackOverlayActivity" />
-        <activity android:name=".BrowseErrorActivity" />
+        <!--<activity
+            android:name=".official.MainActivity"
+            android:banner="@drawable/app_icon_your_company"
+            android:icon="@drawable/app_icon_your_company"
+            android:label="@string/app_name"
+            android:logo="@drawable/app_icon_your_company"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity android:name=".official.DetailsActivity" />
+        <activity android:name=".official.PlaybackOverlayActivity" />
+        <activity android:name=".official.BrowseErrorActivity" />
     </application>
 
 </manifest>

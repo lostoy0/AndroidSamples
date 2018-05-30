@@ -1,57 +1,81 @@
 package com.lostoy.android.samples;
 
-import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
-import com.lostoy.android.samples.widget.CustomHorizontalProgressBar;
+import com.lostoy.android.samples.tv.TVDemoFragment;
 
-import java.util.Random;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    public static ArrayList<EditText> editTextList = new ArrayList<>();
+    private LinearLayout mRoot;
 
-    private CustomHorizontalProgressBar mProgressBar;
+    private ExperimentFragment experimentFragment;
 
-    private Handler mHandler;
-
-    private float mProgress = 0.0f;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mHandler = new Handler();
+        Log.e("raymond", "oncreate--------------");
 
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        experimentFragment = ExperimentFragment.newInstance();
 
-        mProgressBar = (CustomHorizontalProgressBar) findViewById(R.id.progressBar);
+        fragmentManager = getSupportFragmentManager();
 
-        findViewById(R.id.startButton).setOnClickListener(new View.OnClickListener() {
+        fragmentManager.beginTransaction().replace(R.id.container, new TVDemoFragment()).commit();
+
+//        mRoot = (LinearLayout) findViewById(R.id.editTextRoot);
+//
+//        findViewById(R.id.addEditText).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addEditText(v);
+//            }
+//        });
+//
+//        findViewById(R.id.removeEditText).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                removeEditText(v);
+//            }
+//        });
+//
+//        findViewById(R.id.requestFocus).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                requestFocus(v);
+//            }
+//        });
+
+        findViewById(R.id.attachFragment).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mProgress = 0.0f;
-                mProgressBar.reset();
-                mHandler.postDelayed(mProgressRunnable, 3000);
+            public void onClick(View v) {
+                if(experimentFragment.isDetached()) {
+                    Log.e("raymond", "attach fragment");
+                    fragmentManager.beginTransaction().attach(experimentFragment).commit();
+                } else {
+                    Log.e("raymond", "detach fragment");
+                    fragmentManager.beginTransaction().detach(experimentFragment).commit();
+                }
             }
         });
 
-    }
-
-    private Runnable mProgressRunnable = new Runnable() {
-        @Override
-        public void run() {
-            mProgress = mProgressBar.getProgress()+0.05f;
-            mProgressBar.setProgress(mProgress);
-            if(mProgress < 1.0f) {
-                mHandler.postDelayed(mProgressRunnable, new Random().nextInt(1000));
+        findViewById(R.id.testRequestFocus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperimentFragment.editTextList.get(0).requestFocus();
             }
-        }
-    };
+        });
+    }
 
     /**
      * A native method that is implemented by the 'native-lib' native library,
@@ -62,5 +86,19 @@ public class MainActivity extends AppCompatActivity {
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
+    }
+
+    public void addEditText(View v) {
+        editTextList.add(new EditText(this));
+        mRoot.addView(editTextList.get(editTextList.size()-1), LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    public void removeEditText(View v) {
+        mRoot.removeView(editTextList.get(0));
+        editTextList.remove(0);
+    }
+
+    public void requestFocus(View v) {
+        editTextList.get(editTextList.size()-1).requestFocus();
     }
 }
