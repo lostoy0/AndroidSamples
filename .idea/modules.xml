@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidSamples.iml" filepath="$PROJECT_DIR$/AndroidSamples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tv/tv.iml" filepath="$PROJECT_DIR$/tv/tv.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tvappdemo/tvappdemo.iml" filepath="$PROJECT_DIR$/tvappdemo/tvappdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidSamples.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidSamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/AndroidSamples.mobile.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/AndroidSamples.mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidSamples.samples.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidSamples.samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tv/AndroidSamples.tv.iml" filepath="$PROJECT_DIR$/.idea/modules/tv/AndroidSamples.tv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tvappdemo/AndroidSamples.tvappdemo.iml" filepath="$PROJECT_DIR$/.idea/modules/tvappdemo/AndroidSamples.tvappdemo.iml" />
     </modules>
   </component>
 </project>

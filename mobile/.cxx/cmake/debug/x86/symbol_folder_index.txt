@@ -1,0 +1,1 @@
+/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/build/intermediates/cmake/debug/obj/x86

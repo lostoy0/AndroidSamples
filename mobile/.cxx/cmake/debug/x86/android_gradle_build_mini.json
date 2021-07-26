@@ -1,0 +1,33 @@
+{
+  "buildFiles": [
+    "/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/lifanlong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/.cxx/cmake/debug/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/lifanlong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/.cxx/cmake/debug/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "native-lib-Debug-x86": {
+      "artifactName": "native-lib",
+      "buildCommandComponents": [
+        "/Users/lifanlong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/.cxx/cmake/debug/x86",
+        "native-lib"
+      ],
+      "abi": "x86",
+      "output": "/Users/lifanlong/Projects/Raymond/AndroidSamples/mobile/build/intermediates/cmake/debug/obj/x86/libnative-lib.so",
+      "runtimeFiles": []
+    }
+  }
+}
