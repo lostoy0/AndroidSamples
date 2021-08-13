@@ -1,2 +1,2 @@
-include ':mobile', ':tv', ':samples', ':tvappdemo'
+include ':mobile', ':tv', ':tvappdemo'
 include ':common'

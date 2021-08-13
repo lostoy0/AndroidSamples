@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidSamples.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidSamples.buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/AndroidSamples.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/AndroidSamples.common.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/AndroidSamples.mobile.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/AndroidSamples.mobile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidSamples.samples.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidSamples.samples.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tv/AndroidSamples.tv.iml" filepath="$PROJECT_DIR$/.idea/modules/tv/AndroidSamples.tv.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tvappdemo/AndroidSamples.tvappdemo.iml" filepath="$PROJECT_DIR$/.idea/modules/tvappdemo/AndroidSamples.tvappdemo.iml" />
     </modules>

@@ -81,7 +81,7 @@
 
     </LinearLayout>
 
-    <com.lostoy.android.samples.raymond.widget.RecyclerViewForTV
+    <com.lostoy.android.samples.widget.RecyclerViewForTV
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

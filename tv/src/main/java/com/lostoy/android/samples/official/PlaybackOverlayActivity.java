@@ -29,12 +29,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.lostoy.android.samples.R;
+import com.lostoy.android.samples.official.PlaybackOverlayFragment.OnPlayPauseClickedListener;
 
 /**
  * PlaybackOverlayActivity for video playback that loads PlaybackOverlayFragment
  */
-public class PlaybackOverlayActivity extends Activity implements
-        PlaybackOverlayFragment.OnPlayPauseClickedListener {
+public class PlaybackOverlayActivity extends Activity implements OnPlayPauseClickedListener {
     private static final String TAG = "PlaybackOverlayActivity";
 
     private VideoView mVideoView;
