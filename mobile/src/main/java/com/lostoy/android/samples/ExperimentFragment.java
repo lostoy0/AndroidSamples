@@ -30,7 +30,7 @@ public class ExperimentFragment extends BaseFragment {
 
     private static final String KEY_PARAMS = "params";
 
-    public static ArrayList<EditText> editTextList = new ArrayList<>();
+    private final ArrayList<EditText> editTextList = new ArrayList<>();
     private ArrayList<View> itemViews = new ArrayList<>();
     private LinearLayout mRoot;
     private LayoutInflater mInflater;

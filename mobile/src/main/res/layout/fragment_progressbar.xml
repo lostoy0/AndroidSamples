@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lostoy.android.samples.official.MainActivity">
-
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    android:padding="16dp">
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:focusable="true"
-        android:layout_below="@+id/sample_text"
-        android:text="开始">
-        <requestFocus/>
-    </Button>
+        android:text="@string/sample_progress_start" />
 
-    <com.lostoy.android.samples.raymond.widget.CustomHorizontalProgressBar
+    <com.lostoy.android.samples.widget.CustomHorizontalProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerVertical="true" />
 </RelativeLayout>

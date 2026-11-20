@@ -2,6 +2,7 @@ package com.lostoy.android.samples;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import androidx.annotation.Nullable;
 import android.view.View;
 
@@ -30,7 +31,7 @@ public class ProgressBarFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override
@@ -42,6 +43,7 @@ public class ProgressBarFragment extends BaseFragment {
         getView().findViewById(R.id.startButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mHandler.removeCallbacks(mProgressRunnable);
                 mProgress = 0.0f;
                 mProgressBar.reset();
                 mHandler.postDelayed(mProgressRunnable, 3000);
@@ -50,7 +52,14 @@ public class ProgressBarFragment extends BaseFragment {
 
     }
 
-    private Runnable mProgressRunnable = new Runnable() {
+    @Override
+    public void onDestroyView() {
+        mHandler.removeCallbacks(mProgressRunnable);
+        mProgressBar = null;
+        super.onDestroyView();
+    }
+
+    private final Runnable mProgressRunnable = new Runnable() {
         @Override
         public void run() {
             mProgress = mProgressBar.getProgress()+0.05f;

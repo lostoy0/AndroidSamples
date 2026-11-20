@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">AndroidSamples</string>
+    <string name="sample_catalog_title">Mobile 示例</string>
+    <string name="sample_input">输入框与焦点</string>
+    <string name="sample_flow">ConstraintLayout Flow</string>
+    <string name="sample_recycler_animation">RecyclerView 动画</string>
+    <string name="sample_progress">自定义进度条</string>
+    <string name="sample_progress_start">开始</string>
+    <string name="sample_jni">JNI 调用</string>
+    <string name="sample_gaid">GAID 获取</string>
+    <string name="sample_oaid">OAID 获取</string>
+    <string name="sample_numbers">数值运算</string>
+    <string name="sample_read_gaid">读取 GAID</string>
+    <string name="sample_read_oaid">读取 OAID</string>
+    <string name="sample_id_description">点击读取，结果或不支持的原因会记录到 Logcat。</string>
+    <string name="sample_id_requested">已调用读取示例，请在 Logcat 中查看结果。</string>
+    <string name="sample_number_output">1 ÷ 0.0f = %1$s\n大于 Integer.MAX_VALUE：%2$b\n8 ÷ 2 = %3$s</string>
+    <string name="sample_recycler_add">添加条目</string>
+    <string name="sample_recycler_remove">移除条目</string>
+    <string name="sample_recycler_item">条目 %1$d</string>
 </resources>

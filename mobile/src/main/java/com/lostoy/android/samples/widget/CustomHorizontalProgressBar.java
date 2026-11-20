@@ -47,8 +47,8 @@ public class CustomHorizontalProgressBar extends FrameLayout {
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
 
         mBackgroundWidth = mBackgroundImageView.getWidth();
         mCursorWidth = mCursorImageView.getWidth();
