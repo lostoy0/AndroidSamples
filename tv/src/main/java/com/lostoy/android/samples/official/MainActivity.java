@@ -14,15 +14,16 @@
 
 package com.lostoy.android.samples.official;
 
-import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.lostoy.android.samples.R;
 
 /*
  * MainActivity class that loads MainFragment
  */
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
     /**
      * Called when the activity is first created.
      */

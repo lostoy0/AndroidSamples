@@ -17,6 +17,7 @@ package com.lostoy.android.samples.official;
 import android.app.Activity;
 
 import android.media.MediaMetadataRetriever;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,9 +50,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.lostoy.android.samples.R;
 
 import java.util.ArrayList;
@@ -390,11 +390,16 @@ public class PlaybackOverlayFragment extends androidx.leanback.app.PlaybackSuppo
         Glide.with(getActivity())
                 .load(uri)
                 .centerCrop()
-                .into(new SimpleTarget<GlideDrawable>(CARD_WIDTH, CARD_HEIGHT) {
+                .into(new CustomTarget<Drawable>(CARD_WIDTH, CARD_HEIGHT) {
                     @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                         mPlaybackControlsRow.setImageDrawable(resource);
                         mRowsAdapter.notifyArrayItemRangeChanged(0, mRowsAdapter.size());
+                    }
+
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        mPlaybackControlsRow.setImageDrawable(null);
                     }
                 });
     }

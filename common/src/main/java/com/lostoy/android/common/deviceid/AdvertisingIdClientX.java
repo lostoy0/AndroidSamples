@@ -5,12 +5,10 @@ import android.util.Log;
 
 import androidx.ads.identifier.AdvertisingIdInfo;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.jetbrains.annotations.Nullable;
-
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 public class AdvertisingIdClientX {
@@ -19,26 +17,16 @@ public class AdvertisingIdClientX {
 
     public static void determineAdvertisingInfo(Context context) {
         if (androidx.ads.identifier.AdvertisingIdClient.isAdvertisingIdProviderAvailable(context)) {
-            ListenableFuture<AdvertisingIdInfo> advertisingIdInfoListenableFuture =
+            ListenableFuture<AdvertisingIdInfo> infoFuture =
                     androidx.ads.identifier.AdvertisingIdClient.getAdvertisingIdInfo(context.getApplicationContext());
-            Futures.addCallback(advertisingIdInfoListenableFuture, new FutureCallback<AdvertisingIdInfo>() {
-                @Override
-                public void onSuccess(@Nullable AdvertisingIdInfo adInfo) {
-                    String id = adInfo.getId();
-                    String providerPackageName =
-                            adInfo.getProviderPackageName();
-                    boolean isLimitTrackingEnabled = adInfo.isLimitAdTrackingEnabled();
-                    Log.d(TAG, "AdvertisingIdClientX adid: " + id);
-                }
-
-                // Any exceptions thrown by getAdvertisingIdInfo()
-                // cause this method to get called.
-                @Override
-                public void onFailure(Throwable t) {
-                    Log.e(TAG, "AdvertisingIdClientX Failed to connect to Advertising ID provider.");
-                    // Try to connect to the Advertising ID provider again,
-                    // or fall back to an ads solution that doesn't require
-                    // using the Advertising ID library.
+            infoFuture.addListener(() -> {
+                try {
+                    Log.d(TAG, "AdvertisingIdClientX adid: " + infoFuture.get().getId());
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    Log.e(TAG, "AdvertisingIdClientX Interrupted while reading Advertising ID.", e);
+                } catch (ExecutionException | CancellationException e) {
+                    Log.e(TAG, "AdvertisingIdClientX Failed to connect to Advertising ID provider.", e);
                 }
             }, Executors.newCachedThreadPool());
         } else {

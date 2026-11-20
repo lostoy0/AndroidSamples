@@ -25,6 +25,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.app.BrowseFragment;
 import androidx.leanback.widget.ArrayObjectAdapter;
@@ -47,9 +48,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.lostoy.android.samples.R;
 
 public class MainFragment extends BrowseFragment {
@@ -204,16 +204,19 @@ public class MainFragment extends BrowseFragment {
     protected void updateBackground(String uri) {
         int width = mMetrics.widthPixels;
         int height = mMetrics.heightPixels;
-        Glide.with(getActivity())
+        Glide.with((FragmentActivity) getActivity())
                 .load(uri)
                 .centerCrop()
                 .error(mDefaultBackground)
-                .into(new SimpleTarget<GlideDrawable>(width, height) {
+                .into(new CustomTarget<Drawable>(width, height) {
                     @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable>
-                                                        glideAnimation) {
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                         mBackgroundManager.setDrawable(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        mBackgroundManager.setDrawable(null);
                     }
                 });
         mBackgroundTimer.cancel();

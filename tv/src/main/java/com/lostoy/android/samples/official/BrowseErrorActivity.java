@@ -13,7 +13,6 @@
  */
 package com.lostoy.android.samples.official;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,12 +23,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.lostoy.android.samples.R;
 
 /*
  * BrowseErrorActivity shows how to use ErrorFragment
  */
-public class BrowseErrorActivity extends Activity {
+public class BrowseErrorActivity extends FragmentActivity {
     private static int TIMER_DELAY = 3000;
     private static int SPINNER_WIDTH = 100;
     private static int SPINNER_HEIGHT = 100;

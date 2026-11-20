@@ -14,15 +14,16 @@
 
 package com.lostoy.android.samples.official;
 
-import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.lostoy.android.samples.R;
 
 /*
  * Details activity class that loads LeanbackDetailsFragment class
  */
-public class DetailsActivity extends Activity {
+public class DetailsActivity extends FragmentActivity {
     public static final String SHARED_ELEMENT_NAME = "hero";
     public static final String MOVIE = "Movie";
 

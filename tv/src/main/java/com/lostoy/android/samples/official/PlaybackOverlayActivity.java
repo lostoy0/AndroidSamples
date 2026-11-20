@@ -16,6 +16,7 @@ package com.lostoy.android.samples.official;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.media.MediaMetadata;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
@@ -26,8 +27,8 @@ import android.view.KeyEvent;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.lostoy.android.samples.R;
 import com.lostoy.android.samples.official.PlaybackOverlayFragment.OnPlayPauseClickedListener;
 
@@ -150,12 +151,18 @@ public class PlaybackOverlayActivity extends Activity implements OnPlayPauseClic
         metadataBuilder.putString(MediaMetadata.METADATA_KEY_ARTIST, movie.getStudio());
 
         Glide.with(this)
-                .load(Uri.parse(movie.getCardImageUrl()))
                 .asBitmap()
-                .into(new SimpleTarget<Bitmap>(500, 500) {
+                .load(Uri.parse(movie.getCardImageUrl()))
+                .into(new CustomTarget<Bitmap>(500, 500) {
                     @Override
-                    public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
+                    public void onResourceReady(Bitmap bitmap, Transition<? super Bitmap> transition) {
                         metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ART, bitmap);
+                        mSession.setMetadata(metadataBuilder.build());
+                    }
+
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ART, null);
                         mSession.setMetadata(metadataBuilder.build());
                     }
                 });

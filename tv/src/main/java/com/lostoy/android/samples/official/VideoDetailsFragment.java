@@ -17,6 +17,7 @@ package com.lostoy.android.samples.official;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.app.DetailsFragment;
 import androidx.leanback.widget.Action;
@@ -39,9 +40,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.lostoy.android.samples.R;
 
 import java.util.Collections;
@@ -109,15 +109,19 @@ public class VideoDetailsFragment extends DetailsFragment {
     }
 
     protected void updateBackground(String uri) {
-        Glide.with(getActivity())
+        Glide.with((FragmentActivity) getActivity())
                 .load(uri)
                 .centerCrop()
                 .error(mDefaultBackground)
-                .into(new SimpleTarget<GlideDrawable>(mMetrics.widthPixels, mMetrics.heightPixels) {
+                .into(new CustomTarget<Drawable>(mMetrics.widthPixels, mMetrics.heightPixels) {
                     @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable> glideAnimation) {
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                         mBackgroundManager.setDrawable(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        mBackgroundManager.setDrawable(null);
                     }
                 });
     }
@@ -136,18 +140,21 @@ public class VideoDetailsFragment extends DetailsFragment {
                 .getApplicationContext(), DETAIL_THUMB_WIDTH);
         int height = Utils.convertDpToPixel(getActivity()
                 .getApplicationContext(), DETAIL_THUMB_HEIGHT);
-        Glide.with(getActivity())
+        Glide.with((FragmentActivity) getActivity())
                 .load(mSelectedMovie.getCardImageUrl())
                 .centerCrop()
                 .error(R.drawable.default_background)
-                .into(new SimpleTarget<GlideDrawable>(width, height) {
+                .into(new CustomTarget<Drawable>(width, height) {
                     @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable>
-                                                        glideAnimation) {
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                         Log.d(TAG, "details overview card image url ready: " + resource);
                         row.setImageDrawable(resource);
                         mAdapter.notifyArrayItemRangeChanged(0, mAdapter.size());
+                    }
+
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        row.setImageDrawable(null);
                     }
                 });
 

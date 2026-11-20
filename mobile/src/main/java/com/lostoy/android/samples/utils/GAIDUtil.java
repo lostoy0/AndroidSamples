@@ -8,9 +8,8 @@ import com.lostoy.android.common.deviceid.AdvertisingIdClientX;
 
 import java.util.concurrent.Executors;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.schedulers.Schedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class GAIDUtil {
 
@@ -32,25 +31,12 @@ public class GAIDUtil {
     }
 
     public static void initByRxJava(Context context) {
-        Observable.create((Observable.OnSubscribe<String>) subscriber -> {
-            subscriber.onNext(AdvertisingIdClient.getGoogleAdId(context.getApplicationContext()));
-            subscriber.onCompleted();
-        }).subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                Log.d(TAG, "onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                e.printStackTrace();
-                Log.d(TAG, "onError");
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.d(TAG, "onNext: " + s);
-            }
-        });
+        Single.fromCallable(() ->
+                        String.valueOf(AdvertisingIdClient.getGoogleAdId(context.getApplicationContext())))
+                .subscribeOn(Schedulers.io())
+                .subscribe(adId -> {
+                    Log.d(TAG, "onNext: " + adId);
+                    Log.d(TAG, "onCompleted");
+                }, error -> Log.e(TAG, "onError", error));
     }
 }
