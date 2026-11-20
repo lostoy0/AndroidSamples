@@ -1,4 +1,4 @@
-package com.lostoy.android.samples.raymond;
+package com.lostoy.android.samples.me;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lostoy.android.samples.R;
-import com.lostoy.android.samples.raymond.widget.RecyclerViewForTV;
+import com.lostoy.android.samples.me.widget.RecyclerViewForTV;
 
 import java.util.ArrayList;
 import java.util.List;

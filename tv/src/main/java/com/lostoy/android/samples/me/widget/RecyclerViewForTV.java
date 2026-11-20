@@ -1,4 +1,4 @@
-package com.lostoy.android.samples.widget;
+package com.lostoy.android.samples.me.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -24,6 +24,7 @@ public class RecyclerViewForTV extends RecyclerView {
 
     public RecyclerViewForTV(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+
         init();
     }
 

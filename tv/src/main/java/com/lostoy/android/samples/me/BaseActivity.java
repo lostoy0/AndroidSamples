@@ -1,7 +1,6 @@
-package com.lostoy.android.samples.raymond;
+package com.lostoy.android.samples.me;
 
 import androidx.fragment.app.FragmentActivity;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by lifanlong on 2017/12/27.

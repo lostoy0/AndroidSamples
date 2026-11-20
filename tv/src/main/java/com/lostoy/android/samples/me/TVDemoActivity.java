@@ -1,4 +1,4 @@
-package com.lostoy.android.samples.raymond;
+package com.lostoy.android.samples.me;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
