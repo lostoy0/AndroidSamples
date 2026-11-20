@@ -1,6 +1,8 @@
 package com.lostoy.android.samples.utils;
 
 import android.content.Context;
+import android.system.Os;
+import android.system.OsConstants;
 import android.util.Log;
 
 import com.bun.miitmdid.core.MdidSdkHelper;
@@ -13,6 +15,11 @@ public class OAIDUtil {
 
 
     public static void init(Context context) {
+        // The bundled OAID SDK can crash in its native initializer on 16 KB devices.
+        if (Os.sysconf(OsConstants._SC_PAGESIZE) > 4096) {
+            Log.i(TAG, "Skipping legacy OAID SDK on a device with larger memory pages");
+            return;
+        }
 
         MdidSdkHelper.InitSdk(context.getApplicationContext(), true, new IIdentifierListener() {
             @Override

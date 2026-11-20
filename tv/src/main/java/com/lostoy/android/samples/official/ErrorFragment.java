@@ -34,7 +34,7 @@ public class ErrorFragment extends androidx.leanback.app.ErrorFragment {
     }
 
     void setErrorContent() {
-        setImageDrawable(getResources().getDrawable(R.drawable.lb_ic_sad_cloud));
+        setImageDrawable(getResources().getDrawable(androidx.leanback.R.drawable.lb_ic_sad_cloud));
         setMessage(getResources().getString(R.string.error_fragment_message));
         setDefaultBackground(TRANSLUCENT);
 

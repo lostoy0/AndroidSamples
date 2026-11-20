@@ -14,7 +14,6 @@
 
 package com.lostoy.android.samples.official;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.media.MediaMetadata;
@@ -26,6 +25,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.VideoView;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -35,7 +36,7 @@ import com.lostoy.android.samples.official.PlaybackOverlayFragment.OnPlayPauseCl
 /**
  * PlaybackOverlayActivity for video playback that loads PlaybackOverlayFragment
  */
-public class PlaybackOverlayActivity extends Activity implements OnPlayPauseClickedListener {
+public class PlaybackOverlayActivity extends FragmentActivity implements OnPlayPauseClickedListener {
     private static final String TAG = "PlaybackOverlayActivity";
 
     private VideoView mVideoView;
@@ -67,7 +68,8 @@ public class PlaybackOverlayActivity extends Activity implements OnPlayPauseClic
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        PlaybackOverlayFragment playbackOverlayFragment = (PlaybackOverlayFragment) getFragmentManager().findFragmentById(R.id.playback_controls_fragment);
+        PlaybackOverlayFragment playbackOverlayFragment = (PlaybackOverlayFragment)
+                getSupportFragmentManager().findFragmentById(R.id.playback_controls_fragment);
         switch (keyCode) {
             case KeyEvent.KEYCODE_MEDIA_PLAY:
                 playbackOverlayFragment.togglePlayback(false);
