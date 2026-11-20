@@ -12,19 +12,21 @@ public class SampleActivity extends BaseActivity {
     private static final String EXTRA_SAMPLE = "sample";
 
     enum Sample {
-        INPUT(R.string.sample_input),
-        FLOW(R.string.sample_flow),
-        RECYCLER_ANIMATION(R.string.sample_recycler_animation),
-        PROGRESS(R.string.sample_progress),
-        JNI(R.string.sample_jni),
-        GAID(R.string.sample_gaid),
-        OAID(R.string.sample_oaid),
-        NUMBERS(R.string.sample_numbers);
+        INPUT("input", R.string.sample_input),
+        FLOW("flow", R.string.sample_flow),
+        RECYCLER_ANIMATION("recycler-animation", R.string.sample_recycler_animation),
+        PROGRESS("progress", R.string.sample_progress),
+        JNI("jni", R.string.sample_jni),
+        GAID("gaid", R.string.sample_gaid),
+        OAID("oaid", R.string.sample_oaid),
+        NUMBERS("numbers", R.string.sample_numbers);
 
+        final String slug;
         @StringRes
         final int titleRes;
 
-        Sample(@StringRes int titleRes) {
+        Sample(String slug, @StringRes int titleRes) {
+            this.slug = slug;
             this.titleRes = titleRes;
         }
 

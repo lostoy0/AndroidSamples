@@ -1,2 +1,22 @@
-include ':mobile', ':tv', ':tvappdemo'
-include ':common'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+include ':mobile', ':tv', ':tvappdemo', ':common', ':flutterbridge'
+
+def flutterModule = file(providers.gradleProperty('flutterModuleDir')
+        .getOrElse('../flutter_samples_module'))
+def flutterSettings = new File(flutterModule, '.android/include_flutter.groovy')
+if (new File(flutterModule, 'pubspec.yaml').isFile() && flutterSettings.isFile()) {
+    apply from: flutterSettings
+} else {
+    def setupError = "Flutter module is unavailable at ${flutterModule}. " +
+            "Run flutter pub get in the module or pass -PflutterModuleDir=<path>."
+    gradle.rootProject { root ->
+        root.ext.flutterSetupError = setupError
+    }
+}

@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.flutter.bridge'
+    compileSdk = 36
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+if (rootProject.ext.has('flutterSetupError')) {
+    def setupError = rootProject.ext.flutterSetupError
+    def requireFlutterModule = tasks.register('requireFlutterModule') {
+        doLast { throw new GradleException(setupError) }
+    }
+    tasks.named('preBuild') {
+        dependsOn requireFlutterModule
+    }
+}
+
+dependencies {
+    if (findProject(':flutter') != null) {
+        api project(':flutter')
+    }
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+}

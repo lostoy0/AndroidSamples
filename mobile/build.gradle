@@ -7,7 +7,7 @@ android {
     ndkVersion = "28.2.13676358"
     defaultConfig {
         applicationId "com.lostoy.android.samples"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -50,6 +50,7 @@ dependencies {
     implementation files('libs/oaid_sdk_1.0.23.aar')
 
     implementation project(':common')
+    implementation project(':flutterbridge')
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.12'
