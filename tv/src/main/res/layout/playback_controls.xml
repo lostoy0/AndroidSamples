@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/playback_controls_fragment"
-        android:name="com.lostoy.android.samples.official.PlaybackOverlayFragment"
+        android:name="com.lostoy.android.samples.tv.leanback.playback.MoviePlaybackControlsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

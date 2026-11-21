@@ -4,29 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/home_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/home_native_tab"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minHeight="48dp"
-            android:text="@string/hybrid_tab_native" />
-
-        <RadioButton
-            android:id="@+id/home_flutter_tab"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minHeight="48dp"
-            android:text="@string/hybrid_tab_flutter" />
-    </RadioGroup>
-
     <ListView
         android:id="@+id/sample_list"
         android:layout_width="match_parent"
@@ -40,6 +17,26 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/hybrid_open_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hybrid_open_flutter" />
+
+            <Button
+                android:id="@+id/hybrid_open_communications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hybrid_open_communications" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/hybrid_call_dart"
@@ -61,4 +58,37 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
     </LinearLayout>
+    <RadioGroup
+        android:id="@+id/home_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:orientation="horizontal"
+        android:saveEnabled="false">
+
+        <RadioButton
+            android:id="@+id/home_widgets_tab"
+            style="@style/HomeTab"
+            android:text="@string/home_tab_widgets" />
+
+        <RadioButton
+            android:id="@+id/home_layout_tab"
+            style="@style/HomeTab"
+            android:text="@string/home_tab_layout" />
+
+        <RadioButton
+            android:id="@+id/home_device_tab"
+            style="@style/HomeTab"
+            android:text="@string/home_tab_device" />
+
+        <RadioButton
+            android:id="@+id/home_tools_tab"
+            style="@style/HomeTab"
+            android:text="@string/home_tab_tools" />
+
+        <RadioButton
+            android:id="@+id/home_flutter_tab"
+            style="@style/HomeTab"
+            android:text="@string/home_tab_flutter" />
+    </RadioGroup>
 </LinearLayout>

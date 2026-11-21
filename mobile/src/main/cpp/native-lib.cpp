@@ -3,7 +3,7 @@
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_lostoy_android_samples_UtilitySampleFragment_stringFromJNI(
+Java_com_lostoy_android_samples_tools_ToolSampleFragment_stringFromJNI(
         JNIEnv* env,
         jobject /* this */) {
     std::string hello = "Hello from C++";

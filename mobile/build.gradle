@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'custom-plugin'
 
 android {
     namespace = "com.lostoy.android.samples"
     compileSdk = 36
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     ndkVersion = "28.2.13676358"
     defaultConfig {
         applicationId "com.lostoy.android.samples"
@@ -32,6 +39,12 @@ android {
             path = file("CMakeLists.txt")
             version = "3.22.1"
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
     }
 }
 

@@ -35,6 +35,13 @@ if (rootProject.ext.has('flutterSetupError')) {
     }
 }
 
+if (findProject(':flutter') != null) {
+    // Flutter supplies its generated assets to the library's instrumentation APK.
+    tasks.matching { it.name == 'mergeDebugAndroidTestAssets' }.configureEach {
+        dependsOn ':flutter:copyFlutterAssetsDebug'
+    }
+}
+
 dependencies {
     if (findProject(':flutter') != null) {
         api project(':flutter')

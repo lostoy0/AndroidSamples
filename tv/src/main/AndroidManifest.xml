@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback" >
         <activity
-            android:name=".me.TVDemoActivity"
+            android:name=".tv.focus.TvFocusActivity"
+            android:exported="true"
             android:banner="@drawable/app_icon_your_company"
             android:icon="@drawable/app_icon_your_company"
             android:label="@string/app_name"
@@ -30,22 +31,10 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity
-            android:name=".official.MainActivity"
-            android:banner="@drawable/app_icon_your_company"
-            android:icon="@drawable/app_icon_your_company"
-            android:label="@string/app_name"
-            android:logo="@drawable/app_icon_your_company"
-            android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>-->
-        <activity android:name=".official.DetailsActivity" />
-        <activity android:name=".official.PlaybackOverlayActivity" />
-        <activity android:name=".official.BrowseErrorActivity" />
+        <activity android:name=".tv.leanback.browse.MovieBrowseActivity" android:exported="false" />
+        <activity android:name=".tv.leanback.details.MovieDetailsActivity" />
+        <activity android:name=".tv.leanback.playback.MoviePlaybackActivity" />
+        <activity android:name=".tv.leanback.error.BrowseErrorActivity" />
     </application>
 
 </manifest>

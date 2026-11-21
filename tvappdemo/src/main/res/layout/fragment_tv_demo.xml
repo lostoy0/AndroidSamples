@@ -81,7 +81,7 @@
 
     </LinearLayout>
 
-    <com.example.tvappdemo.RecyclerViewForTV
+    <com.example.tvappdemo.focus.FocusedItemRecyclerView
         android:id="@+id/recyclerView"
         android:layout_below="@id/topPanel"
         android:layout_width="match_parent"

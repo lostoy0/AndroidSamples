@@ -1,9 +1,26 @@
-apply plugin: 'java-library'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.10'
+    }
+}
+
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+repositories {
+    mavenCentral()
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-dependencies {
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
 }
